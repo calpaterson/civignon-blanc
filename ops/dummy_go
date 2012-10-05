@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+LOCATION_OF_THIS_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+cd $LOCATION_OF_THIS_SCRIPT
+python -m SimpleHTTPServer 8080
