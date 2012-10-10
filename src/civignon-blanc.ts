@@ -2,7 +2,7 @@ var config = {
     // Where to look the god proxy
     "goFeedApiUrl": "http://localhost:8153/go/api/",
     // How often to check each build (in milliseconds)
-    "frequency": 10000
+    "frequency": 60000
 };
 
 var contents = function () {
@@ -43,13 +43,13 @@ var updateC = function(url_){
 	};
 	request.onload = function(xhrProgressEvent){
 	    var xml = xhrProgressEvent.currentTarget.responseXML;
-	    var success = xml.querySelector("category[label=Passed]").
-		getAttribute("term") === "passed";
-	    if(!success){
-		console.log("Failure!");
-	    } else {
-		console.log("Success!");
-	    }
+	    var category = xml.querySelectorAll("category")[2];
+	    console.log(category);
+	    // if(!success){
+	    // 	console.log("Failure!");
+	    // } else {
+	    // 	console.log("Success!");
+	    // }
 	    window.setTimeout(update, config["frequency"]);
 	};
 	request.open("get", url);
